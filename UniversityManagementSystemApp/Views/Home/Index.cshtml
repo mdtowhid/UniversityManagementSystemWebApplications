@@ -1,0 +1,577 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    @*@model IEnumerable<UniversityManagementSystemApp.Models.Day>*@
+    @model UniversityManagementSystemApp.Models.LogInAsStudent
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Style.css" rel="stylesheet" />
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @*<link href="~/Style.css" rel="stylesheet" />*@
+    <style>
+        h5 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            background: black;
+            color: white;
+            padding: 4px;
+            border-radius: 2px;
+        }
+
+        .footerStyle {
+            height: 150px;
+            background: #5F5F5F;
+            z-index: -9999999;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            width: 273px;
+            margin-left: -16px;
+            border-radius: 2px;
+        }
+
+            /* Style the buttons that are used to open the tab content */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 8px 21px;
+                transition: 0.3s;
+            }
+
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
+
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            margin-left: -16px;
+            width: 328px;
+        }
+
+        #panelForAdmin {
+        }
+
+            #panelForAdmin img {
+                width: 27%;
+                height: 125px;
+                border-radius: 50%;
+                margin-left: 166px;
+                margin-top: 15px;
+            }
+
+        #panelForStudent {
+        }
+
+            #panelForStudent img {
+                width: 27%;
+                height: 125px;
+                border-radius: 50%;
+                margin-left: 166px;
+                margin-top: 5px;
+            }
+        #closeButton {
+            float: right;
+            margin-right: 10px;
+            cursor: pointer;
+            margin-top: -8px;
+            -webkit-transition: .4s all ease;
+            -moz-transition: .4s all ease;
+            -ms-transition: .4s all ease;
+            -o-transition: .4s all ease;
+            transition: .4s all ease;
+        }
+        #closeButton:hover {
+            color: red;
+        }
+        .footerStyle {
+            height: 120px;
+            background: #ffffff;
+            width: 1077px;
+            margin-left: 16px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 12px 0px #ccc;
+        }
+        body {
+            background: #ddd;
+        }
+        .footer {
+            width: 1000px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 marginTop">
+                <br />
+                <div id="mainImgElementContainer">
+                    <img src="~/Images/s1.jpg" id="mainImg" class="img-thumbnail" style="width: 100%; height: 400px; margin-top: -1px" />
+                </div>
+                <div id="imgContainer" style="display: none">
+                    <img src="~/Images/s1.jpg" />
+                    <img src="~/Images/s2.jpg" />
+                    <img src="~/Images/s3.jpg" />
+                    <img src="~/Images/s4.jpg" />
+                    <img src="~/Images/s5.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="commonWrapperForAll"></div>
+                <div id="universityDescription" class="col-lg-8" style="height: 381px; background: #F1EDED; float: left">
+                    <h3 style="margin-top: 23px; margin-bottom: 5px; color: #806969; display: inline-block; border-bottom: 1px solid #ddd; ">Welcome To Premier University</h3>
+                    <p style="font-family: consolas">Premier University was established in the year 2002. According to an international educational survey conducted by Australian government, it received a position of "A" category university. It attaches the paramount importance to the quality of education which imparts to the students. Anyone who wants to enrich himself or herself in knowledge is welcome here. The aim is to provide high quality education to the students and at the same time to imbue them with the finest qualities of humanism so that they will be ready to sacrifice themselves for the peace and prosperity of humanity. No parochialism, communalism or bigotry will be allowed to play any part in this university.</p>
+                </div>
+                <div class="col-lg-3 marginTopMinus" id="noticeNewsEventTab" style="height: 332px; margin-top: -5px;">
+                    <div class="tab">
+                        <button class="tablinks" onclick="openCity(event, 'Notice')">Notice</button>
+                        <button class="tablinks" onclick="openCity(event, 'News')">News</button>
+                        <button class="tablinks" onclick="openCity(event, 'Event')">Event</button>
+                    </div>
+
+                    <!-- Tab content -->
+                    <div id="Notice" class="tabcontent">
+                        <h3>Notice</h3>
+                        <a href="#">Notice for Ramadan</a>
+                        <hr />
+                        <a href="#">
+                            Notice for candidates seeking admission to B.Sc. (Engineering.)
+                            in CSE Program, 34th Batch, Session Fall
+                        </a>
+                        <hr />
+                        <a href="#">
+                            Notice for candidates seeking admission to BA (Honors) in English Program and MA in English Program
+                        </a>
+                    </div>
+
+                    <div id="News" class="tabcontent">
+                        <h3>News</h3>
+                        <p>আজ ২৬ মার্চ, বাংলাদেশের স্বাধীনতা দিবস। প্রিমিয়ার বিশ্ববিদ্যালয় পরিবার শ্রদ্ধাভরে স্মরণ করছে যুদ্ধে আত্মোৎসর্গকৃত আমাদের বীর মুক্তিযোদ্ধাদের। ২৬শে মার্চ,স্বাধীনতা দিবস উপলক্ষে গণিত বিভাগের ছাত্র-ছাত্রীদের তৈরি করা দেয়ালিকা।</p>
+                    </div>
+
+                    <div id="Event" class="tabcontent">
+                        <h3>Event</h3>
+                        <p>
+                            1st Convocation of Premier University held on January 07, 2013 at Bangabandhu International Conference Centre (BICC), Dhaka.
+                            Congratulations the students & wish them best of luck...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="backgroundImage"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="universityThreeColumnView" class="" style=" height: 410px; background: white;">
+                    <div class="col-lg-3" style="height: 100px; background: red; float: left">
+                        <img src="~/Images/FirstColumn.jpg" class=" img-responsive img-thumbnail" style="margin-top: 15px;" />
+                        <h5>Our Deabating Club</h5>
+                        <p style="margin-top: 8px; font-size: 13px">
+                            Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.
+                            Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.
+                        </p>
+                        <a href="#">Read More &raquo; </a>
+                    </div>
+                    <div class="col-lg-3" style="height: 100px; background: red; float: left">
+                        <img src="~/Images/SecondColumn.jpg" class=" img-responsive img-thumbnail" style="margin-top: 15px; height: 172px; width: 100%;" />
+                        <h5>Collection Of </h5>
+                        <p style="margin-top: 8px; font-size: 13px">
+                            Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.
+                            Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.
+                        </p>
+                        <a href="#">Read More &raquo; </a>
+                    </div>
+                    <div class="col-lg-3" style="height: 100px; background: red; float: left">
+                        <img src="~/Images/ThirdColumn.jpg" class=" img-responsive img-thumbnail" style="margin-top: 15px; height: 172px; width: 100%;" />
+                        <h5>Premier University Bus</h5>
+                        <p style="margin-top: 8px; font-size: 13px">
+                            Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.
+                            Lorem Ipsum Dolor Sit Amit.Lorem Ipsum Dolor Sit Amit.
+                        </p>
+                        <a href="#">Read More &raquo; </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="loginFormWrapper">
+        <div id="loginForm">
+            <h1 id="closeButton">&times;</h1>
+            <div id="panelForAdmin">
+                <img src="~/Images/admin.png" class="card-img-top img-responsive"/>
+                <div id="adminLogInForm" style="width: 350px; margin: 0 auto;">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label class="control-label col-lg-2"><b>Email</b></label>
+                            <div class="col-lg-10">
+                                <input type="email" id="adminEmailTextBox" class="form-control" placeholder="Email"/>
+                                <p id="adminEmailError" class="col-lg-12" style="margin-top: 10px"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2"><b>Password</b></label>
+                            <div class="col-lg-10">
+                                <input type="password" id="adminPasswordTextBox" class="form-control" placeholder="Password"/>
+                                <p id="adminPasswordError" class="col-lg-12" style="margin-top: 10px"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <input type="submit" id="adminLogInButton" class="btn btn-success btn-sm" value="Log In As Admin"/>
+                            </div>
+                        </div>
+
+                        <b>@Html.ActionLink("Need An Account? Sign Up", "SignUp", "Admin")</b>
+                        <p class="col-lg-10" id="notExistAdminError"></p>
+                    }
+
+                </div>
+
+            </div>
+            <hr/>
+            @*<div id="backgroundImageInLogInForm"></div>*@
+            <div id="panelForStudent" style="height: ;">
+                <img src="~/Images/student.png" class="card-img-top img-responsive" />
+                <div id="studentLogInForm" style="width: 350px; margin: 0 auto;">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label class="control-label col-lg-2"><b>Email</b></label>
+                            <div class="col-lg-10">
+                                <input type="email" id="userEmailTextBox" class="form-control" placeholder="Email" />
+                                <p id="userEmailError" class="col-lg-12" style="margin-top: 10px"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2"><b>Password</b></label>
+                            <div class="col-lg-10">
+                                <input type="password" id="passwordTextBox" class="form-control" placeholder="Password" />
+                                <p id="passwordError" style="margin-top: 10px"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <input type="submit" id="studentLogInButton" class="btn btn-success btn-sm" value="Log In As Student" />
+                            </div>
+                        </div>
+                        <b>@Html.ActionLink("Need An Account? Sign Up", "SignUp", "LogInAsStudent")</b>
+                        <p class="col-lg-10" id="notExistStudentError"></p>
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="x"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well" style="height: 100px">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @*//for student script*@
+        <script>
+            $(document).ready(function () {
+                $('#loginFormWrapper').css('display', 'none');
+
+                //#logIn from _layout file...
+                $('#logIn').click(function () {
+                    $('#loginFormWrapper').css('display', 'block');
+                });
+                $('#closeButton').click(function () {
+                    $('#loginFormWrapper').css('display', 'none');
+                });
+
+                
+                $('#studentLogInButton').click(function () {
+
+                    if ($('#userEmailTextBox').val() == "") {
+                        $('#userEmailError').html("Please Provide Email")
+                            .css('border-left', '5px solid red')
+                            .addClass('alert alert-danger');
+                    }
+
+
+                    if ($('#passwordTextBox').val() == "") {
+                        $('#passwordError').html('Please Provide Password')
+                            .css('border-left', '5px solid red')
+                            .addClass('alert alert-danger');
+                    }
+                    else {
+                        var jsonData = {
+                            Email: $('#userEmailTextBox').val(),
+                            Password: $('#passwordTextBox').val()
+                        }
+                        $.ajax({
+                            url: "@Url.Action("LogInStudent", "Home")",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(jsonData),
+                            dataType: "json",
+                            success: function (data) {
+                                if (data == false) {
+                                    $('#notExistStudentError').html("May Be You Forgetted Your Email Or Paaeword")
+                                        .css('color', 'red').addClass('alert alert-danger');
+
+                                }
+                                else if (data == true) {
+                                    var url = '@Url.Action("Home","LogInAsStudent")';
+                                    window.location.href = url;
+                                } else {
+                                    //nothing to do;
+                                }
+
+                            }
+                        });
+                    }
+
+                    return false;
+                });
+                $('#userEmailTextBox').change(function () {
+                    $('#userEmailError').html("").removeClass('alert');
+                });
+                $('#passwordTextBox').change(function () {
+                    $('#passwordError').html("").removeClass('alert');
+                });
+            });
+        </script>
+
+
+    <script>
+            $(document).ready(function () {
+
+                $('#adminLogInButton').click(function () {
+
+                    if ($('#adminEmailTextBox').val() == "") {
+                        $('#adminEmailError').html("Please Provide Email")
+                            .css('border-left', '5px solid red')
+                            .addClass('alert alert-danger');
+                    }
+
+
+                    if ($('#adminPasswordTextBox').val() == "") {
+                        $('#adminPasswordError').html('Please Provide Password')
+                            .css('border-left', '5px solid red')
+                            .addClass('alert alert-danger');
+                    }
+                    else {
+                        var jsonData = {
+                            Email: $('#adminEmailTextBox').val(),
+                            Password: $('#adminPasswordTextBox').val()
+                        }
+                        $.ajax({
+                            url: "@Url.Action("LogInAdmin", "Home")",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(jsonData),
+                            dataType: "json",
+                            success: function (data) {
+                                if (data == false) {
+                                    $('#notExistAdminError').html("May Be You Forgetted Your Email Or Paaeword")
+                                        .css('color', 'red').addClass('alert alert-danger');
+
+                                }
+                                else if (data == true) {
+                                    var url = '@Url.Action("HomePageForAdmin","Home")';
+                                    window.location.href = url;
+                                } else {
+                                    //nothing to do;
+                                }
+
+                            }
+                        });
+                    }
+
+                    return false;
+                });
+                $('#userEmailTextBox').change(function () {
+                    $('#userEmailError').html("").removeClass('alert');
+                });
+                $('#passwordTextBox').change(function () {
+                    $('#passwordError').html("").removeClass('alert');
+                });
+            });
+    </script>
+
+
+        <script>
+            $(document).ready(function () {
+
+                var imgUrls = new Array();
+                $('#imgContainer img').each(function () {
+                    imgUrls.push($(this).attr('src'));
+                });
+
+                function setImage() {
+                    var mainImgElement = $('#mainImg');
+                    var currentImageUrl = mainImgElement.attr('src');
+                    var currentImageIndex = $.inArray(currentImageUrl, imgUrls);
+                    if (currentImageIndex == (imgUrls.length - 1)) {
+                        currentImageIndex = -1;
+                    }
+
+                    mainImgElement.attr('src', imgUrls[currentImageIndex + 1]);
+                }
+
+                setInterval(setImage, 3000);
+            });
+
+            $('#mainImgElementContainer').css({
+                'margin-top': '20px',
+                'margin-bottom': '30px',
+                'border': '10px solid white',
+                'border-radius': '5px',
+                'box-shadow': '0px 1px 12px 0px #ccc'
+            });
+
+            $('#universityDescription').css({
+                'margin-top': '10px',
+                'border-radius': '5px',
+                'box-shadow': '0px 1px 12px 0px #ccc'
+            });
+
+            $('#universityThreeColumnView').css({
+                'border-radius': '5px',
+                'box-shadow': '0px 1px 12px 0px #ccc'
+            });
+            $('#loginFormWrapper').css({
+                'position': 'fixed',
+                'top': '-60px',
+                'width': '1250px',
+                'height': '700px',
+                'background': 'rgba(0,0,0,0.5)',
+                'left': '-14px'
+            });
+            //$('#loginForm').css({
+            //    'position': 'relative',
+            //    'top': '10%',
+            //    'width': '40%',
+            //    'height': '580px',
+            //    'background': 'white',
+            //    'left': '29.56%',
+            //    'border-radius': '3px',
+            //    'overflow-y': 'scroll',
+            //    'z-index': '9999'
+            //});
+            $('.col-lg-3').css({
+                'max-width': '31%',
+                'margin-top': '12px',
+                'border-radius': '5px',
+                'box-shadow': '0px 1px 12px 0px #ccc',
+                'float': 'left',
+                'height': '380px',
+                'background': 'white',
+                'margin-left': '20px',
+                'border-top': '4px solid #DE5246',
+                'border-bottom': '4px solid #1BA261',
+                'border-left': '4px solid #0085FD',
+                'border-right': '4px solid #68217A'
+            });
+            $('.commonWrapperForAll').css({
+                'padding-top': ''
+            });
+            
+            $('.backgroundImage').css({
+                'background-image': "url('../s3.jpg')",
+                'width': 'auto',
+                'height': '100px',
+                'background-attachment': 'fixed',
+                'background-repeat': 'no-repeat'
+            });
+
+
+
+
+            $('#backgroundImageInLogInForm').css({
+                'background-image': "url('../parallax1.jpg')",
+                'width': 'auto',
+                'height': '100px',
+                'background-attachment': 'fixed',
+                'background-repeat': 'no-repeat'
+            });
+        </script>
+
+        @* Tab Script *@
+        <script>
+            function openCity(evt, cityName) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
+
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+    }
+</body>
+</html>

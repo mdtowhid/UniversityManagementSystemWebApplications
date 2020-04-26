@@ -1,0 +1,45 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="customStyle">
+                
+            </div>
+        </div>
+    </div>
+</div>
+@*<script>
+            $(document).ready(function () {
+                
+
+                $('#displayLogedInInfo').click(function () {
+                    alert("hgjhgjfhgjfh");
+                    var jsonData = {
+                        StudentRegistrationNumber: $('#studentRegNo').val(),
+                        StudentId: $('#studentId').val()
+                    }
+
+                    $.ajax({
+                        url: "@Url.Action("LoadLogedInInfo", "Enrollment")",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(jsonData),
+                        datatype: "json",
+                        success: function (data) {
+                            if (data != null) {
+                                var studentId = data.StudentId;
+                                window.location.href = '@Url.Action("LogedInHome", "Enrollment", new { StudentId = "cc" })'.replace("cc", studentId);
+                            } else if (data === null) {
+                                $('#notExistStudentError').html("Oops! Information Is Incorrect.").addClass('alert alert-danger');
+
+                            }
+                            //"/LogInAsStudent/LogedInHome/"+data.StudentId
+                        },
+                        error: function () {
+                            alert("Ooops! There Is An Error.");
+                        }
+                    });
+                    return false;
+                });
+            });
+        </script>*@
+

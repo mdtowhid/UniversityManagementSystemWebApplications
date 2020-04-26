@@ -1,0 +1,123 @@
+﻿@model UniversityManagementSystemApp.Models.LogInAsStudent
+<link href="~/Content/CustomStyle.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Style.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="customStyle">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h3>Sign Up</h3>
+                        <hr />
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserId, new {@class = "control-label col-md-6"})
+                            <div class="col-md-10">
+                                <input type="text" name="UserId" id="userIdTextBox" class="form-control col-lg-6"/>
+                                @Html.ValidationMessageFor(model => model.UserId)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="email" name="Email" id="emailIdTextBox" class="form-control col-lg-6"/>
+                                <span id="emailHelpText"></span>
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="password" name="Password" id="passwordTextBox" class="form-control col-lg-6" />
+                                @*@Html.EditorFor(model => model.Password)*@
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ConfirmPassword,"Confirm Password", new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="password" name="ConfirmPassword" id="confirmPasswordTextBox" class="form-control col-lg-6" />
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                            </div>
+                        </div>
+
+                        <div id="signUpDetails" class="col-lg-5"></div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" id="submitButtonSignUp" value="Sign Up" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#submitButtonSignUp').click(function() {
+                var jsonData = {
+                    UserId: $('#userIdTextBox').val(),
+                    Email: $('#emailIdTextBox').val(),
+                    Password: $('#passwordTextBox').val(),
+                    ConfirmPassword: $('#confirmPasswordTextBox').val()
+                }
+                $.ajax({
+                    url: "@Url.Action("SignUp", "LogInAsStudent")",
+                    type: "POST",
+                    contentType:"application/json; charset=utf-8",
+                    data: JSON.stringify(jsonData),
+                    datatype: "json",
+                    success:function(data) {
+                        if (data == true) {
+                            $('#signUpDetails').html("Success! Your data has been successfully saved. Thanks for your sign up.")
+                                .addClass("alert alert-success")
+                                .css({
+                                    'margin-left': '15px',
+                                    'border-left': "5px solid green"
+                                });;
+                            
+                        } else {
+                            $('#signUpDetails').html("Oops! data doesn't saved.")
+                                .addClass("alert alert-danger")
+                                .css({
+                                    'margin-left': '15px',
+                                    'border-left':"5px solid red"
+                                });
+                           
+                        }
+                    },
+                    error:function() {
+                        alert("Ooops! There Is An Error.");
+                    }
+                });
+                
+                return false;
+            });
+
+            $('#emailIdTextBox').focus(function () {
+                $('#emailHelpText').html("Email Must Be Matched With Admin Panel").css('color','red');
+            });
+            $('#emailIdTextBox').blur(function () {
+                $('#emailHelpText').html("");
+            });
+        });
+    </script>
+}

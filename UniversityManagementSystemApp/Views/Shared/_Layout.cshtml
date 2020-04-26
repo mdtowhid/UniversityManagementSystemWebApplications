@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Web Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/CustomStyle.css" rel="stylesheet" />*@
+    <style>
+        .floatLeft {
+            float: left;
+        }
+
+        .floatRight {
+            float: right;
+        }
+
+        #unOrderList {
+            list-style-type: none;
+        }
+
+            #unOrderList li {
+                float: left;
+                position: relative;
+            }
+
+                #unOrderList li a {
+                    display: inline-block;
+                    overflow: hidden;
+                    background: #5F5F5F;
+                    color: white;
+                    text-decoration: none;
+                    transition: .5s all ease-in;
+                }
+
+                    #unOrderList li a:hover {
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                #unOrderList li ul {
+                    list-style-type: none;
+                    z-index: 99;
+                    margin-top: 1px;
+                    position: absolute;
+                    left: -9999px;
+                }
+
+                    #unOrderList li ul li {
+                        float: none;
+                        margin-left: -40px;
+                        margin-top: -6px;
+                    }
+
+                        #unOrderList li ul li a {
+                            display: inline-block;
+                            overflow: hidden;
+                            background: #5F5F5F;
+                            color: white;
+                            text-decoration: none;
+                            transition: .5s all ease-in;
+                            width: 200px;
+                        }
+
+                            #unOrderList li ul li a:hover {
+                                background: #4CAF50;
+                            }
+
+                #unOrderList li:hover ul {
+                    left: 0;
+                }
+        #logoImage {
+            width: 274px;
+            height: 50px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 7px 0px;
+            margin-top: -1px;
+            -ms-border-radius: 22px;
+            border-radius: 22px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12" style="background: #5F5F5F; height: 49px;">
+            <div class="floatLeft">
+                <ul id="unOrderList">
+                    <li id="displayLogedInInfo"><a href="#"><img src="~/Images/PucLogo.jpg" class="img-responsive" id="logoImage"/></a></li>
+                    
+                </ul>
+            </div>
+            <div class="floatRight">
+                <ul id="unOrderList">
+                    <li>
+                        <button id="logIn" class="btn btn-sm btn-success" style="margin-top: 9px; margin-right: 41px;">Log In</button>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        @*<div style="float: right; position: absolute; right: 10px">
+
+            </div>*@
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container body-content">
+                @RenderBody()
+                <hr/>
+                <footer>
+                    <p>&copy; All Right Preserved @DateTime.Now.Year Premier University, Chottogram.</p>
+                </footer>
+            </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @Scripts.Render("~/Content/CustomStyle.css")
+            @RenderSection("scripts", required: false)
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

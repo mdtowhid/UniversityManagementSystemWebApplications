@@ -1,0 +1,257 @@
+﻿@using UniversityManagementSystemApp.Models
+@model UniversityManagementSystemApp.Models.Admin
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h6 {
+        color: red;
+    }
+    .adminSignUpWrapper {
+        width: 600px;
+        margin: 0 auto;
+        box-shadow: 0px 1px 12px 0px #ccc;
+        margin-top: 5px;
+        border-radius: 5px;
+    }
+    h4 {
+        padding: 10px 16px;
+        margin-top: 5px;
+        background: black;
+        color: white;
+        display: block;
+        border-radius: 3px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="adminSignUpWrapper">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4 class="col-lg-12">Admin Sign Up Form</h4>
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FirstName, "First Name", new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="FirstNameTextBox" name="FirstName" class="form-control col-lg-9" />
+                                <h6 id="errorFirstName"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LastName, "Last Name", new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="LastNameTextBox" name="LastName" class="form-control col-lg-9" />
+                                <h6 id="errorLastName"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="EmailTextBox" name="Email" class="form-control col-lg-9" />
+                                <h6 id="errorEmail"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserName, "User Name", new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="UserNameTextBox" name="UserName" class="form-control col-lg-9" />
+                                <h6 id="errorUserName"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="AddressTextBox" name="Address" class="form-control col-lg-9" />
+                                <h6 id="errorAddress"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="CityTextBox" name="City" class="form-control col-lg-9" />
+                                <h6 id="errorCity"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PhoneNumber, "Phone Number", new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="PhoneNumberTextBox" name="PhoneNumber" class="form-control col-lg-9" />
+                                <h6 id="errorPhoneNumber"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="PasswordTextBox" name="Password" class="form-control col-lg-9" />
+                                <h6 id="errorPassword"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password", new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <input type="text" id="ConfirmPasswordTextBox" name="ConfirmPassword" class="form-control col-lg-9" />
+                                <h6 id="errorConfirmPassword"></h6>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DesignationId, "Designation", new { @class = "control-label col-md-6" })
+                            <div class="col-md-10">
+                                <select id="DesignationId" name="DesignationId" class="form-control col-lg-9">
+                                    <option value="0">Select Designation</option>
+                                    @foreach (Designation designation in ViewBag.DesignationId)
+                                    {
+                                        <option value="@designation.Id">@designation.DesignationName</option>
+                                    }
+                                </select>
+                                <h6 id="errorDesignationId"></h6>
+                            </div>
+                        </div>
+                        <div id="signUpDetails" class="col-lg-8"></div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" id="signUpButton" value="Sign Up" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div style="background: black; padding: 16px; border-radius: 2px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+
+            $('#signUpButton').click(function () {
+                var firstName = $('#FirstNameTextBox').val();
+                var lastName = $('#LastNameTextBox').val();
+                var email = $('#EmailTextBox').val();
+                var userName = $('#UserNameTextBox').val();
+                var address = $('#AddressTextBox').val();
+                var city = $('#CityTextBox').val();
+                var phoneNumber = $('#PhoneNumberTextBox').val();
+                var password = $('#PasswordTextBox').val();
+                var confirmPassword = $('#ConfirmPasswordTextBox').val();
+                var designationId = $('#DesignationId :selected').val();
+                var errorValue = 0;
+
+                if (firstName === "") {
+                    $('#errorFirstName').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (lastName === "") {
+                    $('#errorLastName').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (email === "") {
+                    $('#errorEmail').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (userName === "") {
+                    $('#errorUserName').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (address === "") {
+                    $('#errorAddress').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (city === "") {
+                    $('#errorCity').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (phoneNumber === "") {
+                    $('#errorPhoneNumber').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (password === "") {
+                    $('#errorPassword').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if (confirmPassword === "") {
+                    $('#errorConfirmPassword').html("Please Provide This Field");
+                    errorValue = 1;
+                }
+                if ($('#DesignationId :selected').text() === "Select Designation") {
+                    $('#errorDesignationId').html("Please Select Your Designation");
+                    errorValue = 1;
+                }
+                if (errorValue === 1) {
+                    return false;
+
+                } else {
+                    var jsonData = {
+                        FirstName: firstName,
+                        LastName: lastName,
+                        Email: email,
+                        UserName: userName,
+                        Address: address,
+                        City: city,
+                        PhoneNumber: phoneNumber,
+                        Password: password,
+                        ConfirmPassword: confirmPassword,
+                        DesignationId: designationId
+                    };
+                    $.ajax({
+                        url: "@Url.Action("AdminSignUp", "Admin")",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(jsonData),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data == true) {
+                                $('#signUpDetails').html("<b>Mr. Admin!</b> Your data has been saved successfully.. Thanks for your sign up.")
+                                    .addClass("alert alert-success")
+                                    .css({
+                                        'margin-left': '15px',
+                                        'border-left': "5px solid green"
+                                    });;
+
+                            } else {
+                                $('#signUpDetails').html("Oops! data doesn't saved.")
+                                    .addClass("alert alert-danger")
+                                    .css({
+                                        'margin-left': '15px',
+                                        'border-left': "5px solid red"
+                                    });
+
+                            }
+                        },
+                        error: function () {
+
+                        }
+                    });
+                    return false;
+                }
+                return false;
+            });
+        });
+
+        $('input').change(function () {
+            $('h6').html("");
+        });
+
+    </script>
+
+}

@@ -1,0 +1,70 @@
+﻿body {
+    background-color: #f0f0f0;
+}
+
+img {
+    border-radius: 3px;
+}
+
+#loginFormWrapper {
+    position: absolute;
+    top: -60px;
+    width: 1250px;
+    height: 580px;
+    background: #000000;
+    background: rgba(0, 0, 0, 0.6);
+    left: -14px;
+}
+
+#loginForm {
+    position: relative;
+top: 11%;
+width: 36%;
+height: 450px;
+background: white none repeat scroll 0% 0%;
+left: 26.56%;
+border-radius: 3px;
+overflow-y: scroll;
+z-index: 9999;
+}
+
+.myFormStyle {
+    width: 700px;
+    margin: 0 auto;
+    top: 200px;
+}
+
+/*.backgroundImage {
+    width: 100%;
+    background-image: url('~/Images/s3.jpg');
+    height: 100px;
+    background-position: top right;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+}*/
+
+.fade {
+    -webkit-animation-name: fadeIn;
+    -moz-animation-name: fadeIn;
+    -ms-animation-name: fadeIn;
+    -o-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -ms-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#mainImgElementContainer {
+}

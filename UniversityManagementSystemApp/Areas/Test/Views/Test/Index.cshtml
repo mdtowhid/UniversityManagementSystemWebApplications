@@ -1,0 +1,54 @@
+﻿@model IEnumerable<UniversityManagementSystemApp.Areas.Test.Models.Test>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .divider {
+            width: 113px;
+            height: 2px;
+            background: #ff0;
+            display: block;
+            opacity: 0;
+        }
+         td:hover ~ .divider {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag)
+            </th>
+            <th>Actions</th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.Raw(item.Tag)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
